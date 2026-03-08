@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using MyApp.Infrastructure.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +11,14 @@ namespace MyApp.Infrastructure
 {
     public static class DependencyInjection
     {
-        public static IServiceCollection AddInfrastructureDI(this IServiceCollection service)
+        public static IServiceCollection AddInfrastructureDI(this IServiceCollection services)
         {
-            return service;
+            services.AddDbContext<AppDbContext>(options =>
+            {
+                options.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=MyAppDb;Trusted_Connection=True;TrustServerCertificate=True;");
+            });
+
+            return services;
         }
     }
 }
