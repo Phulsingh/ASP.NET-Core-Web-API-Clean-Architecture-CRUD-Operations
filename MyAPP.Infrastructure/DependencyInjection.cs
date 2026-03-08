@@ -1,11 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using MyApp.Core.Interface;
 using MyApp.Infrastructure.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using MyApp.Infrastructure.Repositeries;
 
 namespace MyApp.Infrastructure
 {
@@ -17,6 +14,8 @@ namespace MyApp.Infrastructure
             {
                 options.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=MyAppDb;Trusted_Connection=True;TrustServerCertificate=True;");
             });
+
+            services.AddScoped<IEmployeeRepositery, EmployeeRepositery>();
 
             return services;
         }
