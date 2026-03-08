@@ -18,6 +18,5 @@ namespace MyApp.Core.Interface
         Task<EmployeeEntity> UpdateEmployeeAsync(Guid employeeId, EmployeeEntity entity);
 
         Task<bool> DeleteEmployeeAsync(Guid employeeId);
-
     }
 }
