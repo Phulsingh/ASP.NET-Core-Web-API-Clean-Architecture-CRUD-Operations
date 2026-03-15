@@ -5,10 +5,10 @@ namespace MyApp.API
 {
     public static class  DependencyInjection
     {
-            public static IServiceCollection AddAppDI(this IServiceCollection service)
+            public static IServiceCollection AddAppDI(this IServiceCollection service, IConfiguration configuration)
             {
             service.AddApplicationDI()
-                   .AddInfrastructureDI();
+                   .AddInfrastructureDI(configuration);
                 return service;
             }
        
